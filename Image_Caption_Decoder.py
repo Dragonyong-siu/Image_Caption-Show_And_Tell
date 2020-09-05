@@ -1,29 +1,33 @@
 import random
-class Image_Caption_Model_LSTM(nn.Module):
+class Image_Caption_Model_LSTMCell(nn.Module):
   def __init__(self):
-    super(Image_Caption_Model_LSTM, self).__init__()
+    super(Image_Caption_Model_LSTMCell, self).__init__()
     self.GPT2_Model = GPT2_Model
     self.GPT2_wte = self.GPT2_Model.wte
     self.GPT2_Hidden = 768
     self.LSTMCell_Model = nn.LSTMCell(self.GPT2_Hidden, self.GPT2_Hidden)
     self.Linear_FC = nn.Linear(8 * 8 * 512, self.GPT2_Hidden)
+    self.Linear_HH = nn.Linear(8 * 8 * 512, self.GPT2_Hidden)
+    self.Linear_CC = nn.Linear(8 * 8 * 512, self.GPT2_Hidden)
     self.Linear_LM = nn.Linear(self.GPT2_Hidden, 50260)
     self.ReLU = nn.ReLU(inplace = True)
     self.Dropout = nn.Dropout(0.2, inplace = True)
-    self.Sequence_length = 40
-    self.Batch_size = 16
+    self.Sequence_length = 36
+    self.Batch_size = 32
 
   def forward(self, input_ids, feature_map):
     feature_map = feature_map.view(-1, 8 * 8 * 512)
-    feature_map = self.Linear_FC(feature_map)
-   
+    first_token = self.Linear_FC(feature_map)
+
     input_wte = self.GPT2_wte(input_ids)[:, :-1]
-    input_Embedding = torch.cat([feature_map.unsqueeze(1), input_wte], dim = 1) 
+    input_Embedding = torch.cat([first_token.unsqueeze(1), input_wte], dim = 1) 
     input_Embedding = input_Embedding.to(device) 
     
     Hidden_states = []
-    hidden = torch.zeros((self.Batch_size, self.GPT2_Hidden)).to(device)
-    cell = torch.zeros((self.Batch_size, self.GPT2_Hidden)).to(device)
+    ## hidden = torch.zeros((self.Batch_size, self.GPT2_Hidden)).to(device)
+    ## cell = torch.zeros((self.Batch_size, self.GPT2_Hidden)).to(device)
+    hidden = self.Linear_HH(feature_map)
+    cell = self.Linear_CC(feature_map)
     for i in range(self.Sequence_length):
       hidden, cell = self.LSTMCell_Model(input_Embedding[:, i, :], (hidden, cell))
       Hidden_states.append(hidden.unsqueeze(1))
@@ -38,8 +42,10 @@ class Image_Caption_Model_LSTM(nn.Module):
     Sampling_inputs = self.Linear_FC(feature_map)
 
     Sample_Ids = []
-    hidden = torch.zeros((1, self.GPT2_Hidden)).to(device)
-    cell = torch.zeros((1, self.GPT2_Hidden)).to(device)
+    ## hidden = torch.zeros((1, self.GPT2_Hidden)).to(device)
+    ## cell = torch.zeros((1, self.GPT2_Hidden)).to(device)
+    hidden = self.Linear_HH(feature_map)
+    cell = self.Linear_CC(feature_map)
     for i in range(max_len):
       Sampling_inputs = Sampling_inputs.unsqueeze(1)
       Sampling_inputs = Sampling_inputs.to(device) 
@@ -54,7 +60,7 @@ class Image_Caption_Model_LSTM(nn.Module):
       Sampling_inputs = Sampling_inputs.to(device)
     Sample_Ids = torch.stack(Sample_Ids, dim = 1)
     return Sample_Ids
-  
+
 def Next_Word_Index(logits):
   Last_Word_Embedding = logits[0, :]
   Softmax_logits = torch.softmax(Last_Word_Embedding, dim = 0)
@@ -78,9 +84,12 @@ def Next_Word_Index(logits):
 
   Index_MAZINO = []
   for i in range(len(Index_List)):
-    if Index_List[i][1] >= 0.05:
+    if Index_List[i][1] >= 0.35:
       Index_MAZINO.append(Index_List[i][0])
+  if len(Index_MAZINO) == 0:
+    Index_MAZINO = [First_Index]
+
   Words_Index = random.choice(Index_MAZINO)
   return Words_Index 
 
-Image_Caption_Decoder = Image_Caption_Model_LSTM().to(device)
+Image_Caption_Decoder = Image_Caption_Model_LSTMCell().to(device)
