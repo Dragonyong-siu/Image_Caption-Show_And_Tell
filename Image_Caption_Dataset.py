@@ -42,7 +42,6 @@ class Dataset_A(torch.utils.data.Dataset):
     Image_Tensor = Image_Tensor.to(device)
     Feature_Map = self.feature_extractor(Image_Tensor)
 
-    
     # Caption_Ids
     # Caption_Target
     Target_List = self.data[index][1]
@@ -67,6 +66,7 @@ class Dataset_A(torch.utils.data.Dataset):
     Caption_Target = Padding(Caption_Target, self.Encoded_PAD, Padding_Length)
 
     # Rezist to Dictionary
+    Dictionary['Target_List'] = Target_List
     Dictionary['Feature_Map'] = Feature_Map.squeeze(0)
     Dictionary['Caption_Ids'] = torch.Tensor(Caption_Ids)
     Dictionary['Caption_Target'] = torch.Tensor(Caption_Target)
@@ -106,7 +106,6 @@ class Dataset_B(torch.utils.data.Dataset):
     Image_Tensor = Image_Tensor.to(device)
     Feature_Map = self.feature_extractor(Image_Tensor)
 
-    
     # Caption_Ids
     # Caption_Target
     Target_List = self.data[index][1]
@@ -131,6 +130,7 @@ class Dataset_B(torch.utils.data.Dataset):
     Caption_Target = Padding(Caption_Target, self.Encoded_PAD, Padding_Length)
 
     # Rezist to Dictionary
+    Dictionary['Target_List'] = Target_List
     Dictionary['Feature_Map'] = Feature_Map.squeeze(0)
     Dictionary['Caption_Ids'] = torch.Tensor(Caption_Ids)
     Dictionary['Caption_Target'] = torch.Tensor(Caption_Target)
@@ -170,7 +170,6 @@ class Dataset_C(torch.utils.data.Dataset):
     Image_Tensor = Image_Tensor.to(device)
     Feature_Map = self.feature_extractor(Image_Tensor)
 
-    
     # Caption_Ids
     # Caption_Target
     Target_List = self.data[index][1]
@@ -195,6 +194,7 @@ class Dataset_C(torch.utils.data.Dataset):
     Caption_Target = Padding(Caption_Target, self.Encoded_PAD, Padding_Length)
 
     # Rezist to Dictionary
+    Dictionary['Target_List'] = Target_List
     Dictionary['Feature_Map'] = Feature_Map.squeeze(0)
     Dictionary['Caption_Ids'] = torch.Tensor(Caption_Ids)
     Dictionary['Caption_Target'] = torch.Tensor(Caption_Target)
@@ -243,7 +243,6 @@ class Dataset_D(torch.utils.data.Dataset):
     Tokenized_Caption = self.tokenizer.tokenize(Target_Caption)
     Encoded_Caption = self.tokenizer.encode(Tokenized_Caption)
     
-    
     if len(Encoded_Caption) >= (self.max_len - 2):
       Caption_Ids = [self.Encoded_START] + Encoded_Caption[:(self.max_len - 2)]
       Caption_Target = [self.Encoded_START] + Encoded_Caption[:(self.max_len - 2)] \
@@ -259,6 +258,7 @@ class Dataset_D(torch.utils.data.Dataset):
     Caption_Target = Padding(Caption_Target, self.Encoded_PAD, Padding_Length)
 
     # Rezist to Dictionary
+    Dictionary['Target_List'] = Target_List
     Dictionary['Feature_Map'] = Feature_Map.squeeze(0)
     Dictionary['Caption_Ids'] = torch.Tensor(Caption_Ids)
     Dictionary['Caption_Target'] = torch.Tensor(Caption_Target)
@@ -271,12 +271,12 @@ def Padding(X, padding_value, padding_length):
 
 from torch.utils.data import DataLoader
 data_input = Train_data
-caption_length = 40
+caption_length = 36
 Image_Caption_Dataset_GPT2 = Dataset_A(data_input, caption_length, Image_Caption_Encoder) + \
                              Dataset_B(data_input, caption_length, Image_Caption_Encoder) + \
                              Dataset_C(data_input, caption_length, Image_Caption_Encoder) + \
                              Dataset_D(data_input, caption_length, Image_Caption_Encoder)
 Train_dataloader = DataLoader(Image_Caption_Dataset_GPT2,
-                              batch_size = 16,
+                              batch_size = 32,
                               shuffle = True,
                               drop_last = True)
