@@ -22,3 +22,9 @@
 5) Image_Caption_Loss : CrossEntropyLoss
 
 6) Image_Caption_Train
+
+: I made 3 Models for Image Captioning
+ 1.LSTMCell_Decoder
+ 2.LSTM_Decoder
+ 3.GPT2_Decoder
+ 
