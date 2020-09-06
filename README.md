@@ -1,4 +1,4 @@
-# Image_Caption_Show_And_Tell
+# Image_Caption_by_GPT2_and_LSTM
 
  Show and Tell : A Neutral Caption Generator
 
