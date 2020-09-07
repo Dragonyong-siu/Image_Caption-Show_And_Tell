@@ -13,7 +13,7 @@ class Image_Caption_Model_GPT2(nn.Module):
     self.Linear_FC = nn.Linear(8 * 8 * 512, self.GPT2_Hidden)
     self.Linear_LM = nn.Linear(self.GPT2_Hidden, 50260)
     self.ReLU = nn.ReLU(inplace = True)
-    self.Dropout = nn.Dropout(0.3, inplace = True)
+    self.Dropout = nn.Dropout(0.1, inplace = True)
 
   def forward(self, input_ids, position_ids, feature_map):
     feature_map = feature_map.view(-1, 8 * 8 * 512)
