@@ -103,4 +103,44 @@ Bleu4 :
 
 
 ## tips for user
-The bleu4 score was used as an indicator of training in the training process in the corresponding project. In the process,  found that bleuscore could rise to as high as 0.1 points through the beam search. This, of course, refers to the possibility that learning has not been fully accomplished, but also to the need for beam search. The sampling process of obtaining a capture from a trained model seems to be very important.
+The bleu4 score was used as an indicator of training in the training process in the corresponding project. In the process,  found that bleus-core could rise to as high as 0.1 points through the beam search. This, of course, refers to the possibility that learning has not been fully accomplished, but also to the need for beam search. The sampling process of obtaining a capture from a trained model seems to be very important.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Parameters(if increased then improve the performance of the model)
+1. rnn hidden size
+2. img size
+3. encoder's size(bigger model like efficientnet or resnet152)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## reference
+
+I got a lot of help from [muggin-show-and-tell](https://github.com/muggin/show-and-tell) and
+[sgrvinod-a-PyTorch-Tutorial-to-Image-Captioning](https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Image-Captioning#objective), [Renovamen-Image-Captioning](https://github.com/Renovamen/Image-Captioning/tree/master/models/decoders) 
+
+
+thank you
