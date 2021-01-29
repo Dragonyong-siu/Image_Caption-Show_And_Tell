@@ -103,9 +103,10 @@ Bleu4 :
 
 
 ## tips for user
-1. The bleu4 score was used as an indicator of training in the training process in the corresponding project. In the process,  found that bleus-core could rise to as high as 0.1 points through the beam search. This, of course, refers to the possibility that learning has not been fully accomplished, but also to the need for beam search. The sampling process of obtaining a capture from a trained model seems to be very important.
 
-2.I had a lot of stress from gpu because the working environment was colab. I introduce automatic_mixed_precision that can efficiently use gpu. In my case, the usage of gpu fell in half and I could increase the batch size from 16 to 36.
+ 1. The bleu4 score was used as an indicator of training in the training process in the corresponding project. In the process,  found that bleus-core could rise to as high as 0.1 points through the beam search. This, of course, refers to the possibility that learning has not been fully accomplished, but also to the need for beam search. The sampling process of obtaining a capture from a trained model seems to be very important.
+
+ 2.I had a lot of stress from gpu because the working environment was colab. I introduce automatic_mixed_precision that can efficiently use gpu. In my case, the usage of gpu fell in half and I could increase the batch size from 16 to 36.
 
 
 
