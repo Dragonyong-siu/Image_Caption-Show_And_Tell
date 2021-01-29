@@ -51,3 +51,7 @@ download  caption annotation here :
 
 
 
+## vocab
+As a vocabulary for embeddedding. I tried using gpt2 (50257 tokens) and Bert (30232 tokens), but this required a relatively large amount of computation and was slow at learning, so I created vocab_dict separately.(See vocab.py for this.)
+
+I selected frequently used words from the coco annotation data and proceeded with encoding.(I selected 5,000 tokens.)
