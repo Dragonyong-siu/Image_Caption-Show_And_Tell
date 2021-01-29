@@ -89,10 +89,10 @@ decoder's trained_weight:[trained_weight]()
 ## evaluation
 After training, Bleu (1, 2, 3, 4), CIDER, METEOR, and ROUGE_L were evaluated.
 
-* [bleu1] - 0.
-* [bleu2] - 0.
-* [bleu3] - 0.
-* [bleu4] - 0.
+* [bleu1] - N/A
+* [bleu2] - N/A
+* [bleu3] - N/A
+* [bleu4] - 19.58
 
 
 /
