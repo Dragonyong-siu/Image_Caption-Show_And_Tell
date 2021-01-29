@@ -92,7 +92,7 @@ After training, Bleu (1, 2, 3, 4), CIDER, METEOR, and ROUGE_L were evaluated.
 * [bleu1] - N/A
 * [bleu2] - N/A
 * [bleu3] - N/A
-* [bleu4] - 19.58
+* [bleu4] - N/A
 
 
 /
