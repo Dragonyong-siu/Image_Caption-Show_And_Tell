@@ -78,10 +78,29 @@ I wrote the decoder code using lstm, gru, and basic rnn according to the content
 
 
 
--
+
 
 
 
 
 
 ## evaluation
+After training, Bleu (1, 2, 3, 4), CIDER, METEOR, and ROUGE_L were evaluated.
+Bleu1 : 
+Bleu2 :
+Bleu3 :
+Bleu4 :
+
+
+
+
+
+
+
+
+
+
+
+
+## tips for user
+The bleu4 score was used as an indicator of training in the training process in the corresponding project. In the process,  found that bleuscore could rise to as high as 0.1 points through the beam search. This, of course, refers to the possibility that learning has not been fully accomplished, but also to the need for beam search. The sampling process of obtaining a capture from a trained model seems to be very important.
