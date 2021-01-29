@@ -261,9 +261,3 @@ def caption_runner():
 
   fitter = caption_fitter(model = net, config = caption_config, params = caption_params)
   fitter.fit(train_dataloader, valid_dataloader)
-  
-  
-  
-  
-  
-
