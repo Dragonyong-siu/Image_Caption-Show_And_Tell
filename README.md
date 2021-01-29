@@ -32,7 +32,7 @@ download  caption annotation here :
 
 
 
-
+/
 
 
 
@@ -47,7 +47,7 @@ I selected frequently used words from the coco annotation data and proceeded wit
 
 
 
-
+/
 
 
 
@@ -61,7 +61,7 @@ I used resnet50 as an encoder. Larger cnn models such as efficientnet and resnet
 
 
 
-
+/
 
 
 
@@ -77,7 +77,7 @@ I wrote the decoder code using lstm, gru, and basic rnn according to the content
 
 
 
-
+/
 
 
 
@@ -94,7 +94,7 @@ Bleu4 :
 
 
 
-
+/
 
 
 
@@ -111,7 +111,7 @@ The bleu4 score was used as an indicator of training in the training process in 
 
 
 
-
+/
 
 
 
@@ -128,7 +128,7 @@ The bleu4 score was used as an indicator of training in the training process in 
 
 
 
-
+/
 
 
 
