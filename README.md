@@ -72,14 +72,16 @@ I used resnet50 as an encoder. Larger cnn models such as efficientnet and resnet
 The decoder structure of the show and tell is built using rnn as a basic structure, which is called the beginning of image caption.
 
 I wrote the decoder code using lstm, gru, and basic rnn according to the content of the paper, and among them, gru obtained the fastest convergence and the highest score.
+
+
+
+
+
+
 -
--
--  
--  
--  
--
--
--
--
--
+
+
+
+
+
 ## evaluation
