@@ -227,3 +227,43 @@ class caption_fitter:
       print(message)
     with open(self.log_path, 'a+') as logger:
       logger.write(f'{message}\n')
+      
+      
+      
+      
+  
+  
+  
+  # caption_runner
+
+from torch.utils.data.sampler import SequentialSampler, RandomSampler
+
+def caption_runner():
+  net.to(device)
+
+  train_dataloader = torch.utils.data.DataLoader(
+      train_dataset,
+      batch_size = caption_config.batch_size,
+      sampler = RandomSampler(train_dataset),
+      pin_memory = False,
+      drop_last = True,
+      num_workers = caption_config.num_workers,
+      collate_fn = collate_fn)
+  
+  valid_dataloader = torch.utils.data.DataLoader(
+      valid_dataset, 
+      batch_size = caption_config.batch_size,
+      num_workers = caption_config.num_workers,
+      shuffle = False,
+      sampler = SequentialSampler(valid_dataset),
+      pin_memory = False,
+      collate_fn = collate_fn)
+
+  fitter = caption_fitter(model = net, config = caption_config, params = caption_params)
+  fitter.fit(train_dataloader, valid_dataloader)
+  
+  
+  
+  
+  
+
