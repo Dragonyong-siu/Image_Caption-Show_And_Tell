@@ -31,8 +31,7 @@ if mode == 'gru':
   modules = [net.model.__word2embed_layer__, 
              net.model.__img2embed_layer__,
              net.model.__language_gru__,
-             net.model.__fc_layer__,
-             net.model.__bn__] 
+             net.model.__fc_layer__] 
 
 elif mode == 'gpt2':
   modules = []
