@@ -84,12 +84,14 @@ I wrote the decoder code using lstm, gru, and basic rnn according to the content
 
 
 
-### evaluation
+## evaluation
 After training, Bleu (1, 2, 3, 4), CIDER, METEOR, and ROUGE_L were evaluated.
 
-'''
-bleu1
-'''
+*bleu1
+*bleu2
+*bleu3
+*bleu4
+
 
 /
 
