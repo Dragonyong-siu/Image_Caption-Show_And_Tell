@@ -74,7 +74,7 @@ The decoder structure of the show and tell is built using rnn as a basic structu
 I wrote the decoder code using lstm, gru, and basic rnn according to the content of the paper, and among them, gru obtained the fastest convergence and the highest score.
 
 
-decoder's trained_weight:[trained_weight]()
+decoder's trained_weight : [trained_weight]()
 
 
 
