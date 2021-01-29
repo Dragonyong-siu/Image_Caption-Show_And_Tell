@@ -22,7 +22,6 @@ class decoder(nn.Module):
     self.__img2embed_layer__ = weight_norm(nn.Linear(self.features_dim, self.embed_dim))
     self.__language_gru__ = nn.GRUCell(self.embed_dim, self.gru_dim)
     self.__fc_layer__ = weight_norm(nn.Linear(self.gru_dim, self.vocab_dim))
-    self.__bn__ = nn.BatchNorm1d(self.embed_dim, momentum = 0.01)
 
     self.softmax = nn.Softmax(dim = 1)
     self.dropout = nn.Dropout(p = dropout)
@@ -52,7 +51,7 @@ class decoder(nn.Module):
   def forward(self, images, input_ids = None):
     batch = images.shape[0] # (N)
     batch_features = self.__encoder__(images).reshape(batch, self.features_dim) # (N, features_dim)
-    imgs_embed = self.__bn__(self.__img2embed_layer__(batch_features)) # (N, embed_dim)
+    imgs_embed = self.__img2embed_layer__(batch_features) # (N, embed_dim)
     
     h1 = self.__init_gru_state__(batch) # (N, gru_dim)
 
