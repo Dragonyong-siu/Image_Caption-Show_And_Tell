@@ -1,4 +1,4 @@
-# Image_Caption_by_GPT2_and_LSTM
+# Show-and-Tell-A-Neural-Image-Caption-Generator-pytorch
 
  Show and Tell : A Neutral Caption Generator
 
