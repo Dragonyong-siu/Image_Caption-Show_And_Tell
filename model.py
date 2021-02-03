@@ -25,7 +25,7 @@ class decoder(nn.Module):
 
     self.softmax = nn.Softmax(dim = 1)
     self.dropout = nn.Dropout(p = dropout)
-    self.dropout1 = nn.Dropout(p = 0.5)
+    self.dropout1 = nn.Dropout(p = 0.2)
 
     self.__init_weights__()
 
