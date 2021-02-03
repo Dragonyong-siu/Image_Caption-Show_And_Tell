@@ -22,8 +22,8 @@ def coco_eval(model, dataloader):
 
       samples = scores.argmax(2) 
       for i in range(batch):
-        indices = torch.where(samples[i] > 3)[0]
-        hypothesis.extend([' '.join([hyper_parameters['tokenizer'].decode(token) for token in samples[i][indices].long().tolist()])])
+        indices = torch.where((samples[i] > 3) & (samples[i] != 5))[0]
+        hypothesis.extend([' '.join([hyper_parameters['tokenizer'].decode(token) for token in samples[i][indices].long().tolist()]) + '.'])
       
       assert len(references) == len(hypothesis)
   
@@ -39,7 +39,14 @@ valid_dataloader = torch.utils.data.DataLoader(
       pin_memory = False,
       collate_fn = collate_fn)
 
-references, hypothesis = coco_eval(gru_decoder.to(device), valid_dataloader)
+references, hypothesis = coco_eval(caption_net, valid_dataloader)
 
-nlgeval = NLGEval()
-nlgeval.compute_metrics(references, hypothesis)
+#nlgeval = NLGEval()
+#nlgeval.compute_metrics(references, hypothesis)
+
+bleu = {
+        'bleu1': round(corpus_bleu(__ref2word__(references), __hyp2word__(hypothesis), weights=(1, 0, 0, 0)), 4),
+        'bleu2': round(corpus_bleu(__ref2word__(references), __hyp2word__(hypothesis), weights=(0.5, 0.5, 0, 0)), 4),
+        'bleu3': round(corpus_bleu(__ref2word__(references), __hyp2word__(hypothesis), weights=(0.33, 0.33, 0.33, 0)), 4),
+        'bleu4': round(corpus_bleu(__ref2word__(references), __hyp2word__(hypothesis), weights=(0.25, 0.25, 0.25, 0.25)), 4)
+    } 
