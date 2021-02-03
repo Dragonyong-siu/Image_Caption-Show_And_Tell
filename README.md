@@ -54,8 +54,8 @@ I selected frequently used words from the coco annotation data and proceeded wit
 
 
 
-## encoder : resnet50
-I used resnet50 as an encoder. Larger cnn models such as efficientnet and resnet152 could have been used, but in this project, encoders were not included in the trainable params, so I chose smaller models.
+## encoder : resnet34
+I used resnet34 as an encoder. Larger cnn models such as efficientnet and resnet152 could have been used, but in this project, encoders were not included in the trainable params, so I chose smaller models.
 
 
 
@@ -74,7 +74,7 @@ The decoder structure of the show and tell is built using rnn as a basic structu
 I wrote the decoder code using lstm, gru, and basic rnn according to the content of the paper, and among them, gru obtained the fastest convergence and the highest score.
 
 
-decoder's trained_weight : [trained_weight]()
+decoder's trained_weight : [trained_weight](https://drive.google.com/file/d/103iaozCgRcqour4PdtJs6yTRUaZqc9Gs/view?usp=sharing)
 
 
 
