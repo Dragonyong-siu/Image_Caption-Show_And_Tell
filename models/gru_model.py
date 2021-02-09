@@ -1,4 +1,4 @@
-# decode : gru
+# model1 : decoder- gru
 
 import torch.nn as nn
 from pytorchcv.model_provider import get_model as ptcv_get_model
@@ -25,7 +25,7 @@ class decoder(nn.Module):
 
     self.softmax = nn.Softmax(dim = 1)
     self.dropout = nn.Dropout(p = dropout)
-    self.dropout1 = nn.Dropout(p = 0.2)
+    self.dropout1 = nn.Dropout(p = 0.5)
 
     self.__init_weights__()
 
