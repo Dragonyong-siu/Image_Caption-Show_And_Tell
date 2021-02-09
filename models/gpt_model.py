@@ -1,9 +1,9 @@
-# decode : transformer
+# model2 : encoder-resnet, decoder-transformer
 
 import torch.nn as nn
 from pytorchcv.model_provider import get_model as ptcv_get_model
 
-cnn = ptcv_get_model('resnet34', pretrained = True) # not trainable parameters
+cnn = ptcv_get_model('vgg19', pretrained = True) # not trainable parameters
 
 class decoder(nn.Module):
   def __init__(self, features_dim, embed_dim, seq_len = hyper_parameters['max_len'], dropout = 0.5):
