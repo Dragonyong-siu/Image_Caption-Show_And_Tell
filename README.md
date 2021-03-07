@@ -67,10 +67,10 @@ I wrote the decoder code using lstm, gru, and basic rnn according to the content
 ## evaluation
 After training, Bleu (1, 2, 3, 4), CIDER, METEOR, and ROUGE_L were evaluated.
 
-[bleu1] - 58.88
-[bleu2] - 41.18
-[bleu3] - 28.84
-[bleu4] - 20.21
+* [bleu1] - 58.88
+* [bleu2] - 41.18
+* [bleu3] - 28.84
+* [bleu4] - 20.21
 
 
 
