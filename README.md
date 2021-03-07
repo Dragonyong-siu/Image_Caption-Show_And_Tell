@@ -14,7 +14,7 @@ This repository is a pytorch implementation of [Show-and-Tell-A-Neural-Image-Cap
 ## coco_dataset: data prepare
 The coco data consists of 80k train images, 40k valid images, and 40k test images. Here, I did not use test data, but trained on 80k images, and only did validation on 40k images.
 
-download images here : 'train_coco_images2014', 'valid_coco_images2014', 'test_coco_images2014'
+download images here : ['train_coco_images2014'](http://images.cocodataset.org/zips/train2014.zip), ['valid_coco_images2014'](http://images.cocodataset.org/zips/val2014.zip), ['test_coco_images2014'](http://images.cocodataset.org/zips/test2014.zip)
 
 download caption annotation here : (http://images.cocodataset.org/annotations/annotations_trainval2014.zip)
 
@@ -55,7 +55,6 @@ The decoder structure of the show and tell is built using rnn as a basic structu
 
 I wrote the decoder code using lstm, gru, and basic rnn according to the content of the paper, and among them, gru obtained the fastest convergence and the highest score.
 
-decoder's trained_weight : trained_weight
 
 
 
