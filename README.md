@@ -90,9 +90,9 @@ I had a lot of stress from gpu because the working environment was colab. I intr
 
 
 ## Parameters(if increased then improve the performance of the model)
-rnn hidden size
-img size
-encoder's size(bigger model like efficientnet or resnet152)
+* rnn hidden size
+* img size
+* encoder's size(bigger model like efficientnet or resnet152)
 
 
 
