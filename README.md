@@ -102,7 +102,7 @@ encoder's size(bigger model like efficientnet or resnet152)
 
 
 ## reference
-I got a lot of help from muggin-show-and-tell and sgrvinod-a-PyTorch-Tutorial-to-Image-Captioning, Renovamen-Image-Captioning
+I got a lot of help from [muggin-show-and-tell](https://github.com/muggin/show-and-tell) and [sgrvinod-a-PyTorch-Tutorial-to-Image-Captioning](https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Image-Captioning), [Renovamen-Image-Captioning](https://github.com/Renovamen/Image-Captioning)
 
 thank you
 
